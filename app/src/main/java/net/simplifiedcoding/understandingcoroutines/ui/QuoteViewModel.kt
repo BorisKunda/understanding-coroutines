@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import net.simplifiedcoding.understandingcoroutines.data.models.Movie
 import net.simplifiedcoding.understandingcoroutines.data.models.Quote
 import net.simplifiedcoding.understandingcoroutines.data.network.MyApi
@@ -28,20 +26,23 @@ class QuoteViewModel : ViewModel() {
                 //val quotes1: Deferred<List<Quote>?> = async { getQuotes("1") }
                 //val quotes2: Deferred<List<Quote>?> = async { getQuotes("2") }
                 //val quotes3: Deferred<List<Quote>?> = async { getQuotes("3") }
-                //android.util.Log.i(TAG, "--------------$i--------------")
+                //android.util.Log.i(TAG, "**********$i**********")
                 //val movies1: Deferred<List<Movie>?> = async { getMovies("1") }
                 //val movies2: Deferred<List<Movie>?> = async { getMovies("2") }
                 //val movies3: Deferred<List<Movie>?> = async { getMovies("3") }
                 //--regular--
-                val quotes1: List<Quote>? = getQuotes("1")
-                val quotes2: List<Quote>? = getQuotes("2")
-                val quotes3: List<Quote>? = getQuotes("3")
+                //val quotes1: List<Quote>? = getQuotes("1")
+                //val quotes2: List<Quote>? = getQuotes("2")
+                //val quotes3: List<Quote>? = getQuotes("3")
+//
+                //android.util.Log.i(TAG, "**********$i**********")
+//
+                //val movies1: List<Movie>? = getMovies("1")
+                //val movies2: List<Movie>? = getMovies("2")
+                //val movies3: List<Movie>? = getMovies("3")
 
-                android.util.Log.i(TAG, "--------------$i--------------")
 
-                val movies1: List<Movie>? = getMovies("1")
-                val movies2: List<Movie>? = getMovies("2")
-                val movies3: List<Movie>? = getMovies("3")
+                quotes.postValue(getQuotes("test"))
 
                 android.util.Log.i(TAG, "Finish $i")
             }
