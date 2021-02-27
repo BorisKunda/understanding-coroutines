@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import net.simplifiedcoding.understandingcoroutines.data.models.Movie
 import net.simplifiedcoding.understandingcoroutines.data.models.Quote
 import net.simplifiedcoding.understandingcoroutines.data.network.MyApi
@@ -22,13 +19,13 @@ class QuoteViewModel : ViewModel() {
         viewModelScope.launch {
             quotes as MutableLiveData
             for (i in 1..5) {
-                val quotes1 = async { getQuotes() }
-                val quotes2 = async { getQuotes() }
-                val quotes3 = async { getQuotes() }
+                val quotes1: Deferred<List<Quote>?> = async { getQuotes() }
+                val quotes2: Deferred<List<Quote>?> = async { getQuotes() }
+                val quotes3: Deferred<List<Quote>?> = async { getQuotes() }
 
-                val movies1 = async { getMovies() }
-                val movies2 = async { getMovies() }
-                val movies3 = async { getMovies() }
+                val movies1: Deferred<List<Movie>?> = async { getMovies() }
+                val movies2: Deferred<List<Movie>?> = async { getMovies() }
+                val movies3: Deferred<List<Movie>?> = async { getMovies() }
             }
         }
     }
